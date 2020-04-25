@@ -4,6 +4,9 @@ extern crate rand_chacha;
 use rand::{Rng, SeedableRng};
 use crate::body::Body;
 
+/// Return a list of random Body
+///
+/// The Random generator always uses the same seed in order to make testing possible.
 pub fn get_values() -> Vec<Body> {
     let mut rng = rand_chacha::ChaCha8Rng::seed_from_u64(10);
     let mut bodies: Vec<Body> = Vec::new();
