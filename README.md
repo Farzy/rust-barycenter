@@ -1,5 +1,7 @@
 # Rust Barycenter
 
+## Synopsis
+
 Test program for the "**Learning Rust**" tutorial by Leo Tindall
 on [O'Reilly Learning](https://learning.oreilly.com).
 
@@ -9,6 +11,23 @@ I use this project to learn various Rust aspects:
 * [Random](https://rust-random.github.io/rand/rand/index.html)
 * [Vec allocation](https://doc.rust-lang.org/std/vec/struct.Vec.html#capacity-and-reallocation)
 * [Rustdoc](https://doc.rust-lang.org/rustdoc/index.html)
+
+## Building
+
+Because of the experimental [benchmark code](https://doc.rust-lang.org/1.7.0/book/benchmark-tests.html)
+you must use the *nightly* version of the `Cargo`toolchain.
+
+```bash
+cargo +nightly build
+```
+
+## Benchmarking
+
+In order to benchmark the two merging functions run:
+
+```bash
+cargo +nightly bench
+```
 
 ## Authors
 
