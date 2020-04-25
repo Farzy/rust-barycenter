@@ -7,11 +7,14 @@
 mod values;
 use crate::values::get_values;
 mod body;
-use crate::body::merge_all_bodies_iter;
+use crate::body::{merge_all_bodies_iter, merge_all_bodies_recursive};
 
 fn main() {
-    let vals = get_values(100);
-    let barycenter = merge_all_bodies_iter(&vals);
+    let vals = get_values(1000);
 
-    println!("Barycenter: {:?}", barycenter);
+    let barycenter = merge_all_bodies_iter(&vals);
+    println!("Barycenter iterative: {:?}", barycenter);
+
+    let barycenter = merge_all_bodies_recursive(&vals);
+    println!("Barycenter recursive: {:?}", barycenter);
 }

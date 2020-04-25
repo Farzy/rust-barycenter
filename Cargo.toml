@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 rand = "0.7"
 rand_chacha = "0.2"
+itertools = "0.9"
+rayon = "1.3"
