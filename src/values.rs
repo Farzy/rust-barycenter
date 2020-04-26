@@ -49,3 +49,19 @@ pub fn get_values(size: usize) -> Vec<Body> {
     // });
     bodies
 }
+
+#[cfg(test)]
+mod tests {
+    use super::get_values;
+
+    #[test]
+    fn test_pseudo_random_values() {
+        let values = get_values(10);
+
+        assert_eq!(values.len(), 10);
+        assert_eq!(values[0].x, 119.74106605089537);
+        assert_eq!(values[0].y, -983.1379236571887);
+        assert_eq!(values[0].z, 77.87151041898233);
+        assert_eq!(values[0].mass, 875.9898531258021);
+    }
+}

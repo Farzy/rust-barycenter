@@ -6,19 +6,19 @@
 //! ```
 //! use barycenter::*
 //!
-//! let b1 : Body {
-//!     x: 1,
-//!     y: 10,
-//!     z: 4,
-//!     mass: 100
-//! }
+//! let b1 = Body {
+//!     x: 1.0,
+//!     y: 10.0,
+//!     z: 4.0,
+//!     mass: 100.0
+//! };
 //!
-//! let b2 : Body {
-//!     x: 2,
-//!     y: 5,
-//!     z: 2,
-//!     mass: 300
-//! }
+//! let b2 = Body {
+//!     x: 2.0,
+//!     y: 5.0,
+//!     z: 2.0,
+//!     mass: 300.0
+//! };
 //!
 //! assert_eq!(average(1.0, 2.0), 1.5);
 //! ```
@@ -29,7 +29,7 @@ use rayon::prelude::*;
 use itertools::Itertools;
 
 /// Body structure with 3D coordinates and mass
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub struct Body {
     pub x: f64,
     pub y: f64,
@@ -82,4 +82,111 @@ pub fn merge_all_bodies_recursive(bodies: &[Body]) -> Body {
     }
 
     merge_all_bodies_recursive(&merged_bodies)
+}
+
+// ------------------------------------------------------------------------------------------
+// Tests
+
+#[cfg(test)]
+mod tests {
+    use crate::body::*;
+
+    #[test]
+    fn test_average() {
+        assert_eq!(average(2.0, 4.0), 3.0);
+    }
+
+    #[test]
+    fn test_weighted_average() {
+        assert_eq!(average_with_mass(2.0, 4.0, 1.0, 3.0), 3.5);
+    }
+
+    #[test]
+    fn test_merge_two_bodies() {
+        let b1 = Body {
+            x: 1.0,
+            y: 10.0,
+            z: 4.0,
+            mass: 100.0
+        };
+        let b2 = Body {
+            x: 2.0,
+            y: 5.0,
+            z: 2.0,
+            mass: 300.0
+        };
+        let body_merged = Body {
+            x: 1.75,
+            y: 6.25,
+            z: 2.5,
+            mass: 400.0
+        };
+
+        let result = merge_two_bodies(b1, b2);
+        assert_eq!(result, body_merged);
+    }
+
+    #[test]
+    fn test_merge_all_bodies_iter() {
+        let b1 = Body {
+            x: 1.0,
+            y: 10.0,
+            z: 4.0,
+            mass: 100.0
+        };
+        let b2 = Body {
+            x: 2.0,
+            y: 5.0,
+            z: 2.0,
+            mass: 300.0
+        };
+        let b3 = Body {
+            x: 2.0,
+            y: 5.0,
+            z: 2.0,
+            mass: 400.0
+        };
+        let bodies = vec![b1, b2, b3];
+        let body_merged = Body {
+            x: 1.875,
+            y: 5.625,
+            z: 2.25,
+            mass: 800.0
+        };
+
+        let result = merge_all_bodies_iter(&bodies);
+        assert_eq!(result, body_merged);
+    }
+
+    #[test]
+    fn test_merge_all_bodies_recursive() {
+        let b1 = Body {
+            x: 1.0,
+            y: 10.0,
+            z: 4.0,
+            mass: 100.0
+        };
+        let b2 = Body {
+            x: 2.0,
+            y: 5.0,
+            z: 2.0,
+            mass: 300.0
+        };
+        let b3 = Body {
+            x: 2.0,
+            y: 5.0,
+            z: 2.0,
+            mass: 400.0
+        };
+        let bodies = vec![b1, b2, b3];
+        let body_merged = Body {
+            x: 1.875,
+            y: 5.625,
+            z: 2.25,
+            mass: 800.0
+        };
+
+        let result = merge_all_bodies_recursive(&bodies);
+        assert_eq!(result, body_merged);
+    }
 }
