@@ -55,3 +55,4 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 4 measured; 0 filtered out
 ## References
 
 * "Learning Rust" tutorial: https://www.packtpub.com/eu/application-development/learning-rust-video
+* "Learning Rust" source code: https://github.com/PacktPublishing/Learning-Rust-video
