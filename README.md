@@ -51,3 +51,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 4 measured; 0 filtered out
 
 * [Leo Tindall](https://learning.oreilly.com/search/?query=author%3A%22Leo%20Tindall%22&extended_publisher_data=true&highlight=true&include_assessments=false&include_case_studies=true&include_courses=true&include_orioles=true&include_playlists=true&include_collections=true&include_notebooks=true&is_academic_institution_account=false&source=user&sort=relevance&facet_json=true&page=0)
 * Farzad FARID
+
+## References
+
+* "Learning Rust" tutorial: https://www.packtpub.com/eu/application-development/learning-rust-video
