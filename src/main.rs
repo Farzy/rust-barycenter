@@ -28,18 +28,33 @@ mod tests {
     use super::*;
     use test::Bencher;
 
-    const SIZE: usize = 1000;
+    const SIZE_SMALL: usize = 1_000;
+    const SIZE_LARGE: usize = 1_000_000;
 
     #[bench]
-    fn bench_merge_iterative(b: &mut Bencher) {
-        let vals = get_values(SIZE);
+    fn bench_merge_iterative_small(b: &mut Bencher) {
+        let vals = get_values(SIZE_SMALL);
 
         b.iter(|| merge_all_bodies_iter(&vals));
     }
 
     #[bench]
-    fn bench_merge_recursive(b: &mut Bencher) {
-        let vals = get_values(SIZE);
+    fn bench_merge_recursive_small(b: &mut Bencher) {
+        let vals = get_values(SIZE_SMALL);
+
+        b.iter(|| merge_all_bodies_recursive(&vals));
+    }
+
+    #[bench]
+    fn bench_merge_iterative_large(b: &mut Bencher) {
+        let vals = get_values(SIZE_LARGE);
+
+        b.iter(|| merge_all_bodies_iter(&vals));
+    }
+
+    #[bench]
+    fn bench_merge_recursive_large(b: &mut Bencher) {
+        let vals = get_values(SIZE_LARGE);
 
         b.iter(|| merge_all_bodies_recursive(&vals));
     }
