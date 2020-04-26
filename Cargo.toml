@@ -1,5 +1,5 @@
 [package]
-name = "rust-barycenter"
+name = "barycenter"
 version = "0.1.0"
 authors = ["Farzad FARID <farzy@farzy.org>"]
 edition = "2018"

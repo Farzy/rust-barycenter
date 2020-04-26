@@ -1,6 +1,27 @@
 //! # Body
 //!
-//! Here we define the body structure and some functions to calculae averages.
+//! Here we define the [`Body`] structure and some functions to calculate weighted averages.
+//!
+//! # Example
+//! ```
+//! use barycenter::*
+//!
+//! let b1 : Body {
+//!     x: 1,
+//!     y: 10,
+//!     z: 4,
+//!     mass: 100
+//! }
+//!
+//! let b2 : Body {
+//!     x: 2,
+//!     y: 5,
+//!     z: 2,
+//!     mass: 300
+//! }
+//!
+//! assert_eq!(average(1.0, 2.0), 1.5);
+//! ```
 
 extern crate rayon;
 extern crate itertools;
@@ -45,6 +66,7 @@ pub fn merge_all_bodies_iter(bodies: &[Body]) -> Body {
     })
 }
 
+/// Merge an array of Body and compute their barycenter using recursion and parallelization
 pub fn merge_all_bodies_recursive(bodies: &[Body]) -> Body {
     println!("Bodies: {}", bodies.len());
 
