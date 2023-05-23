@@ -28,10 +28,10 @@ pub fn get_values(size: usize) -> Vec<Body> {
 
     for _ in 1..=size {
         bodies.push(Body {
-            x: rng.gen_range(-1000.0, 1000.0),
-            y: rng.gen_range(-1000.0, 1000.0),
-            z: rng.gen_range(-1000.0, 1000.0),
-            mass: rng.gen_range(100.0, 1000.0)
+            x: rng.gen_range(-1000.0..1000.0),
+            y: rng.gen_range(-1000.0..1000.0),
+            z: rng.gen_range(-1000.0..1000.0),
+            mass: rng.gen_range(100.0..1000.0)
         })
     }
     // bodies.truncate(0);
